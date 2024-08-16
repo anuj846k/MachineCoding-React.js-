@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import cat from "../assets/bg_cat.png";
+import { Link, useNavigate } from "react-router-dom";
+import { GoArrowLeft } from "react-icons/go";
 
 const CatsListing = () => {
   const [catInfo, setCatInfo] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
-  const limit = 6;
+  const limit = 4;
+  const navigate = useNavigate();
 
   const fetchCatsList = async () => {
     setLoading(true);
@@ -69,15 +72,24 @@ const CatsListing = () => {
       <div className="relative p-10">
         <div className="flex justify-between">
           {" "}
-          <h1 className="text-6xl font-bold text-white mb-6">Cats around us</h1>
-          {hasMore && !loading && (
-            <button
-              onClick={fetchCatsList}
-              className=" relative px-2 py-1 bg-purple-500 mb-1 text-white rounded-full hover:bg-purple-600 transition-colors"
-            >
-              Load More
-            </button>
-          )}
+          <div className="flex items-center">
+            <Link onClick={() => navigate(-1)}>
+              <GoArrowLeft size={40} className="-mt-7"/>
+            </Link>
+            <h1 className="text-6xl font-bold text-white mb-6">
+              Cats around us
+            </h1>
+          </div>
+          <div>
+            {hasMore && !loading && (
+              <button
+                onClick={fetchCatsList}
+                className=" relative px-2 py-2 bg-purple-500 mb-1 text-white rounded-md hover:bg-purple-600 transition-colors"
+              >
+                Load More
+              </button>
+            )}
+          </div>
         </div>
 
         <div className="overflow-x-auto pb-8">
