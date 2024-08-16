@@ -8,13 +8,16 @@ import { IoBookmarkOutline } from "react-icons/io5";
 import { RiShare2Line } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import SkeletonJokes from "./SkeletonJokes";
 
 const RandomJokes = () => {
   const [joke, setJoke] = useState(null);
   const navigate = useNavigate();
+  const [loading,setLoading] = useState(true);
 
   const fetchRandomJokes = async () => {
     try {
+      setLoading(true);
       const response = await fetch(
         "https://api.freeapi.app/api/v1/public/randomjokes/joke/random"
       );
@@ -23,6 +26,8 @@ const RandomJokes = () => {
       setJoke(data);
     } catch (err) {
       console.log("Error:", err);
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -61,6 +66,11 @@ const RandomJokes = () => {
   const generateRandomMetrics = () => {
     return getRandomInt(1, 20) + "k";
   };
+
+
+  if (loading) {
+    return <SkeletonJokes />;
+  }
 
   return (
     <div
