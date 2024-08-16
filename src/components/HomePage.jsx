@@ -3,11 +3,12 @@ import cat from "../assets/cat.gif";
 import Funny from "../assets/Funny.gif";
 import user from "../assets/user.gif";
 import { MdArrowOutward } from "react-icons/md";
+import { GiNinjaHeroicStance } from "react-icons/gi";
 
 const HomePage = () => {
   return (
     <div className="w-screen h-screen bg-zinc-300">
-      <div className="">
+      <div>
         <h1 className="text-center text-5xl font-mono font-semibold bg-black text-orange-500 p-4  ">
           Machine Coding Assignment [React.js]
         </h1>
@@ -62,15 +63,22 @@ const HomePage = () => {
                     />
                   </div>
                 </div>
-                <img src={cat} className= "p-3  mt-4 " alt="" />
+                <img src={cat} className="p-3  mt-4 " alt="" />
               </div>
             </Link>
           </div>
         </div>
       </div>
-      <h1 className="text-center text-2xl  mt-[105px] font-mono font-semibold bg-gray-800 text-white 500 p-4  ">
-        Made by anuj846k
-      </h1>
+      <div className="flex bg-gray-900 mt-[80px] items-center justify-center h-[89px] p-3">
+        <div>
+          <h1 className=" text-2xl   font-mono font-semibold text-white 500   ">
+            Made by anuj846k
+          </h1>
+        </div>
+        <div>
+          <GiNinjaHeroicStance size={50} className="text-white" />
+        </div>
+      </div>
     </div>
   );
 };
