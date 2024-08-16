@@ -4,9 +4,9 @@ import { IoReload } from "react-icons/io5";
 import { MdCall } from "react-icons/md";
 import { SlLocationPin } from "react-icons/sl";
 import chai from "../assets/chai.png";
+import leaves from "../assets/llleaves.svg";
 import { Link, useNavigate } from "react-router-dom";
 import SkeletonLoader from "./SkeletonLoader";
-
 
 const RandomUser = () => {
   const [user, setUser] = useState(null);
@@ -25,7 +25,7 @@ const RandomUser = () => {
       setUser(userData);
     } catch (error) {
       console.error("Error:", error);
-    }finally{
+    } finally {
       setLoading(false);
     }
   };
@@ -55,22 +55,29 @@ const RandomUser = () => {
     }
   };
 
-  const handleCall=()=>{
-    if(user?.phone){
-      const phoneUrl=`tel:${user.phone}`;
+  const handleCall = () => {
+    if (user?.phone) {
+      const phoneUrl = `tel:${user.phone}`;
       window.open(phoneUrl, "_blank");
     }
-  }
+  };
 
   if (loading) {
     return <SkeletonLoader />;
   }
-  
+
   return (
-    <div className="w-full h-screen bg-gray-300 items-center justify-center flex font-serif">
+    <div
+      className="w-full h-screen bg-black items-center justify-center flex font-serif"
+      style={{
+        backgroundImage: `url(${leaves})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <div className="h-auto   w-[45vh] bg-[#b6b3f3] p-3 rounded-2xl border-[8px] border-white">
         <div className="flex-row flex  items-center justify-between">
-          <Link onClick={()=>navigate(-1)}>
+          <Link onClick={() => navigate(-1)}>
             <GoArrowLeft size={30} />
           </Link>
           <h1 className="text-lg font-medium ">Profile Overview</h1>
@@ -106,15 +113,22 @@ const RandomUser = () => {
                 >
                   <SlLocationPin className=" text-white" size={17} />
                 </div>
-                <h1 className="text-sm font-medium" onClick={openMap}>Location</h1>
+                <h1 className="text-sm font-medium" onClick={openMap}>
+                  Location
+                </h1>
               </div>
             </div>
             <div className="flex">
               <div className="flex items-center cursor-pointer">
-                <div className="bg-black p-[3.5px] rounded-full mr-2 " onClick={handleCall}>
+                <div
+                  className="bg-black p-[3.5px] rounded-full mr-2 "
+                  onClick={handleCall}
+                >
                   <MdCall className=" text-white" size={17} />
                 </div>
-                <h1 className="text-sm font-medium" onClick={handleCall}>Call me</h1>
+                <h1 className="text-sm font-medium" onClick={handleCall}>
+                  Call me
+                </h1>
               </div>
             </div>
           </div>
