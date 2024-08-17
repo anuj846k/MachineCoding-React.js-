@@ -42,7 +42,7 @@ const CatsListing = () => {
   }, []);
 
   const LoadingCard = () => (
-    <div className="bg-white h-[80vh] w-[45vh] rounded-xl text-black shadow-lg overflow-hidden animate-pulse">
+    <div className="bg-white h-screen w-[45vh] rounded-xl text-black shadow-lg overflow-hidden animate-pulse">
       <div className="h-[28vh] w-full bg-gray-300"></div>
       <div className="p-4">
         <div className="h-8 bg-gray-300 rounded w-3/4 mb-4"></div>

@@ -1,6 +1,13 @@
+import leaves from "../assets/llleaves.svg";
+
+
 const SkeletonLoader = () => {
     return (
-      <div className="w-full h-screen bg-gray-300 items-center justify-center flex font-serif">
+      <div className="w-full h-screen items-center justify-center flex font-serif bg-black" style={{
+        backgroundImage: `url(${leaves})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}>
         <div className="h-auto w-[45vh] bg-white p-3 rounded-2xl border-[8px] border-gray-200">
           <div className="flex-row flex items-center justify-between">
             <div className="w-8 h-8 bg-gray-200 rounded-full animate-pulse"></div>
